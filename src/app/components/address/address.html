@@ -1,0 +1,68 @@
+<div class="card mb-4 p-3">
+  <h4 class="text-center mb-3">JSCH HQ Address</h4>
+
+  <div *ngIf="addressMessage" class="alert mt-2 alert-dismissible fade show"
+       [ngClass]="{
+         'alert-success': addressMessageType === 'success',
+         'alert-danger': addressMessageType === 'error'
+       }">
+    {{ addressMessage }}
+    <button type="button" class="close" aria-label="Close" (click)="clearMessage()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="addressData.length === 0">
+    <p>No address data found.</p>
+  </div>
+
+  <div *ngIf="addressData.length > 0" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th style="width: 10%;" class="fw-bold">S.No</th>
+          <th class="fw-bold">Line 1</th>
+          <th class="fw-bold">Line 2</th>
+          <th class="fw-bold">Line 3</th>
+          <th style="width: 25%;" class="fw-bold">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of addressData; let i = index">
+          <td>{{ i + 1 }}</td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Line1 }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editLine1" type="text" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Line2 }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editLine2" type="text" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Line3 }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editLine3" type="text" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">
+              <button class="btn btn-primary" (click)="startEdit(item)">Edit</button>
+            </div>
+            <div *ngIf="item.isEditing">
+              <button class="btn btn-success me-2" (click)="saveEdit(item)">Save</button>
+              <button class="btn btn-secondary" (click)="cancelEdit(item)">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

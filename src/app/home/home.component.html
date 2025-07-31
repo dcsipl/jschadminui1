@@ -1,10 +1,36 @@
- <header class="header">
-<img src="images/dcsipl_logo_png.png" alt="Logo" class="logo" />    <h1>JSCH - Just Smart Custom Admin portal</h1>
-    <button class="login-btn">Login</button>
-  </header>
- 
-    <section class="content">
-      <p>This is the admin portal for Just Smart Custom Homes, here we can view/edit/delete the details of JSCH which will impact the customer portals.</p>
-      <div ng-include="currentPage" id="dynamic-content">{{currentTitle}}</div>
-    </section>
-  
+<!-- <header class="header">
+  <img src="images/dcsipl_logo_png.png" alt="Logo" class="logo" />
+  <h1>JSCH - Just Smart Custom Admin Portal</h1>
+  <button class="login-btn">Login</button>
+</header>
+
+<main class="main-content">
+  <aside class="sidebar">
+    <button class="nav-btn green" routerLink="common">JSCH - Common Details</button>
+    <button class="nav-btn" routerLink="ongoing">JSCH - Ongoing Project</button>
+    <button class="nav-btn" routerLink="available">JSCH - Available Projects</button>
+    <button class="nav-btn" routerLink="gallery">JSCH - Gallery</button>
+  </aside>
+
+  <section class="content">
+    <router-outlet></router-outlet> 
+  </section>
+</main> -->
+<header class="header">
+  <img src="images/dcsipl_logo_png.png" alt="Logo" class="logo" />
+  <h1>{{ currentTitle }}</h1>
+  <button class="login-btn">Login</button>
+</header>
+
+<main class="main-content">
+  <aside class="sidebar">
+    <button class="nav-btn green" routerLink="/common">JSCH - Common Details</button>
+    <button class="nav-btn" routerLink="/ongoing">JSCH - Ongoing Project</button>
+    <button class="nav-btn" routerLink="/available">JSCH - Available Projects</button>
+    <button class="nav-btn" routerLink="/gallery">JSCH - Gallery</button>
+  </aside>
+
+  <section class="content">
+    <router-outlet></router-outlet>
+  </section>
+</main>

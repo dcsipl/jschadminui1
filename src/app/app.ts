@@ -10,4 +10,7 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 })
 export class App {
   protected readonly title = signal('jschadmin');
+
+
+  
 }

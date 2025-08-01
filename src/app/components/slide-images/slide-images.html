@@ -1,0 +1,101 @@
+<!-- <div class="custom-card mb-4 p-3">
+  <h4 class="text-center mb-3 fw-bold">Slide Images</h4>
+
+  Alert Message if needed -->
+  <!-- <div class="alert mt-3" *ngIf="successMessage" [ngClass]="{'alert-success': messageType === 'success', 'alert-danger': messageType === 'error'}">
+    {{ successMessage }}
+    <button type="button" class="close" aria-label="Close" (click)="clearMessage()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div> -->
+
+  <!-- Upload Form -->
+  <!-- <form (ngSubmit)="uploadImage()" #imageForm="ngForm" novalidate>
+    <div class="form-row">
+      <div class="col-md-4">
+        <label>Image Name:</label>
+        <input type="text" class="form-control" name="imageName" [(ngModel)]="imageName" required />
+      </div>
+      <div class="col-md-4">
+        <label for="formFile" class="form-label">Image Upload:</label>
+        <input type="file" class="form-control" (change)="onFileSelected($event)" required />
+      </div>
+      <div class="col-md-3 mt-4">
+        <button type="button" class="btn btn-secondary" (click)="loadImages()">View</button>
+        <button type="submit" class="btn btn-success" [disabled]="!selectedFile || !imageName">Save</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+Uploaded Images Table -->
+<!-- <div class="card shadow p-4 mt-3" *ngIf="images.length > 0">
+  <h3 class="text-center mb-4">Uploaded Images</h3>
+  <table class="table table-bordered table-striped table-hover text-center">
+    <thead class="thead-dark">
+      <tr>
+        <th>S.No</th>
+        <th>Image Name</th>
+        <th>Image</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let img of images; index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ img.image_name }}</td>
+        <td><img [src]="'http://localhost:5000/' + img.image_path" style="max-width: 100px;" /></td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteImage(img.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->
+
+
+
+ <div class="custom-card mb-4 p-3">
+  <form (ngSubmit)="uploadImage()" #imageForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-md-4">
+        <label class="fw-bold text-dark">Slide Image Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          name="imageName"
+          [(ngModel)]="imageName"
+          required
+        />
+      </div>
+
+      <div class="col-md-5" >
+        <label class="fw-bold text-dark">Slide Image Upload:</label>
+        <input
+          type="file"
+          class="form-control"
+          (change)="onFileSelected($event)"
+          required
+        />
+      </div>
+
+      <div class="col-md-3 mt-4">
+        <!-- <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="loadImages()"
+        >
+          View
+        </button> -->
+        <button
+          type="submit"
+          class="btn btn-success"
+          [disabled]="!selectedFile || !imageName"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

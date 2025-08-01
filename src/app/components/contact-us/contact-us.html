@@ -1,0 +1,64 @@
+<div class="card mb-4 p-3">
+  <h4 class="text-center mb-3">Contact Us</h4>
+
+  <div *ngIf="contactMessage" class="alert mt-2" [ngClass]="{
+    'alert-success': contactMessageType === 'success',
+    'alert-danger': contactMessageType === 'error'
+  }">
+    {{ contactMessage }}
+  </div>
+
+  <div *ngIf="contactUsData.length === 0">
+    <p>No contact data found.</p>
+  </div>
+
+  <div *ngIf="contactUsData.length > 0" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th class="fw-bold">S.No</th>
+          <th class="fw-bold">Name</th>
+          <th class="fw-bold">Email</th>
+          <th class="fw-bold">Phone</th>
+          <th class="fw-bold">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of contactUsData; let i = index">
+          <td>{{ i + 1 }}</td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Name }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editName" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Email }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editEmail" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Phone }}</div>
+            <div *ngIf="item.isEditing">
+              <input [(ngModel)]="item.editPhone" class="form-control" />
+            </div>
+          </td>
+
+          <td>
+            <div *ngIf="!item.isEditing">
+              <button class="btn btn-primary btn-sm" (click)="startEdit(item)">Edit</button>
+            </div>
+            <div *ngIf="item.isEditing" class="d-flex align-items-center">
+              <button class="btn btn-success btn-sm me-2" (click)="saveEdit(item)">Save</button>
+              <button class="btn btn-secondary btn-sm" (click)="cancelEdit(item)">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

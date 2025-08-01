@@ -1,0 +1,47 @@
+<div class="card mb-4 p-3">
+  <h4 class="text-center mb-3">Copyright</h4>
+
+  <div *ngIf="message" class="alert alert-dismissible fade show mt-2"
+       [ngClass]="{'alert-success': messageType === 'success', 'alert-danger': messageType === 'error'}">
+    {{ message }}
+    <button type="button" class="close" (click)="closeMessage()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <div *ngIf="copyrightData.length === 0">
+    <p>No copyright data found.</p>
+  </div>
+
+  <div *ngIf="copyrightData.length > 0" class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <tr>
+          <th class="fw-bold">S.No</th>
+          <th class="fw-bold">Content</th>
+          <th class="fw-bold">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of copyrightData; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <div *ngIf="!item.isEditing">{{ item.Content }}</div>
+            <div *ngIf="item.isEditing">
+              <input type="text" [(ngModel)]="item.editContent" class="form-control" />
+            </div>
+          </td>
+          <td>
+            <div *ngIf="!item.isEditing">
+              <button class="btn btn-primary" (click)="startEdit(item)">Edit</button>
+            </div>
+            <div *ngIf="item.isEditing">
+              <button class="btn btn-success me-2" (click)="saveEdit(item)">Save</button>
+              <button class="btn btn-secondary" (click)="cancelEdit(item)">Cancel</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
